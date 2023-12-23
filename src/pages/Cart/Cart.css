@@ -1,12 +1,9 @@
-@import url('https://fonts.cdnfonts.com/css/gilroy-bold');
-
-
 .cart-item{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    border-bottom: 5px solid #252525;
+    border-bottom: 1px solid #252525;
 }
 
 .cart-item-col{
@@ -27,12 +24,4 @@ column-gap: 10px;
     justify-content: center;
     align-items: flex-end;
     row-gap: 10px;
-}
-
-button {
-    font-size: 30px;
-}
-
-h1 {
-    font-family: Gilroy-Bold;
 }

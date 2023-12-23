@@ -1,41 +1,37 @@
-import React from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import Card from '../../components/Card/Card';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import Card from "../../components/Card/Card";
 
 const Category = ({ buyFunc }) => {
     const [product, setProduct] = useState([]);
     const params = useParams();
 
     useEffect(() => {
-        setProduct([])
+        setProduct([]);
         axios(`https://fakestoreapi.com/products/category/${params.category}`)
-            .then(({ data }) => setProduct( data ))
-    }, [params]);
-    return (
-        product.length == 0
-        ? <div className='preloader'>
-            <div class="lds-dual-ring"></div>
-            <h1 className='abs'>Loading...</h1>
-        </div>
-        :
-        <section>
-            <div className="container">
-                <div className='row'>
-                    {
+        .then(({data})=>setProduct(data));
+    }, [params])
 
-                        product.map((item) => {
-                            return (
-                                <div key={item.id} className='col-4'>
-                                    <Card buyFunc={buyFunc} item={item} />
-                                </div>
-                            );
+
+
+
+    return (
+        <section>
+   <div className="container">
+                <div className="row">
+                    {
+                         product.length == 0
+                         ? <div className="preloader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+                         :product.map(item => {
+                            return <div key={item.id} className='col-4'>
+                               <Card buyFunc={buyFunc} item={item}/>
+
+                            </div>
                         })
                     }
                 </div>
-                 </div>
+            </div>
         </section>
     );
 }
